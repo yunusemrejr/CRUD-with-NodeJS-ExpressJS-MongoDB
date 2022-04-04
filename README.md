@@ -11,8 +11,8 @@ Usage notes:
 
 3. localhost:3000 is the default port for this project defined in the config.env file.
 
-4. the .env file is missing the mongoDB connection variable on purpose to not expose my connection and for you to build your however you wish.
-5. 
+4. the .env file is missing the mongoDB connection variable on purpose to not expose my connection and for you to build your version however you wish.
+5. The server will always CRASH if you don't change the config.env string into a running available mongoDB connection path.
 6. The variable should be in this format (example): 
 MONGO_URI=mongodb+srv://myAdminName:MySuperSecretPassword@cluster0.xhiwc.mongodb.net/Cluster0?retryWrites=true&w=majority
 
