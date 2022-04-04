@@ -1,0 +1,274 @@
+
+/* importing Barlow and Sans into our stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=PT+Sans&display=swap');
+
+/* adding descriptive variables to be called that determines certain color codes */
+
+:root{
+    --dark: #003838;
+    --light: rgb(190, 190, 190);
+    --general-border: rgb(214, 214, 214);
+    --border-btn: rgb(255, 255, 255);
+
+}
+
+
+/* setting padding, margin and box-sizing for the whole document */
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+/* defining all "a" elements/tags */
+
+a{
+
+    /* removing the underline from default hyperlink styling */
+    text-decoration:none; 
+
+    /* defining font families for the tag */
+    font-family: 'PT Sans', sans-serif;
+
+}
+
+.container{
+    max-width: 1024px;
+    margin:auto;
+}
+
+.nav-brand{
+    font-size: 1.5em;
+    font-weight:bold;
+}
+
+.d-flex{
+    display: flex;
+    flex-wrap:wrap;
+}
+
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.text-center{
+    text-align:center;
+
+}
+
+.border-shadow{
+    /* first use case of our defined color variables */
+    border:1px solid var(--border-btn);
+    box-shadow: 1px 3px 10px lightgrey;
+    border-radius: 6px;
+}
+
+.text-dark{
+    color:var(--dark);
+}
+
+.inline{
+    display:inline-block;
+}
+
+.text-light{
+    color:var(--light);
+}
+
+.text-gradient{
+    /*creating the gradient effect for our buttons (edit| delete  |add user) */
+    background: linear-gradient(to right , #003838 , #1a9191);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+ }
+
+.header nav{
+    background-color:orange;
+    padding:1em 0;
+    width:100%;
+}
+
+#site-main{
+    margin-top:6em;
+    font-family: 'Barlow', sans-serif;
+}
+
+#site-main .container .box-nav>a{
+    font-size:1em;
+    padding:.5em 1em;
+}
+
+#site-main .container form{
+    margin: 2em 0;
+}
+
+table{
+    border-spacing:0px;
+    width: 100%;
+}
+
+.table td, .table th{
+    padding: .75em;
+    vertical-align:top;
+    text-align:center;
+    border-top:4px solid #003838;
+}
+
+.table td> a.btn{
+    padding:.3em 1em;
+    font-size:1.1em;
+    margin:0.2em;
+}
+
+.table tr:hover{
+    background-color:#ff662f;
+}
+
+.table tr:hover td>a{
+    box-shadow: none;
+}
+
+.table .thead-dark th{
+    color:#fff;
+    background-color: var(--dark);
+    border-color:rgb(255, 255, 255);
+}
+
+@media only screen and (max-width:1024px){
+    table, thead, tbody, th, td, tr{
+        display:block;
+    }
+
+    thead tr{
+        position:absolute;
+        top:-9999px;
+        left:-9999px;
+    }
+
+    tr {border:1px solid var(--general-border); }
+
+    td{
+        border:none;
+        border-bottom:1px solid var(--general-border)} ;
+
+    
+
+    
+}
+
+
+
+
+/* add user and update user temp  */
+.form-title{
+    margin-top:2em;
+
+}
+
+.form-title{
+    padding: .5em 0;
+}
+
+.new_user{
+    max-width: 786px;
+    margin: auto;
+}
+
+#update_user .form-group,
+#add_user .form-group{
+    
+    margin:.4em 0; 
+}
+    #update_user .form-group input[type="text"],
+    #add_user .form-group input[type="text"]{
+        width:100%;
+        padding:.6em 1em;
+        margin:.5em 0;
+        border:1px solid var(--general-border);
+        font-family: 'Barlow', sans-serif;
+        font-size: 1em;
+        border-radius:.2em;
+
+    }
+
+    #update_user .form-group .radio,
+    #add_user .form-group .radio{
+        margin:1em 2em;
+    }
+/* styling the header part */
+.nav-brand{
+
+    color:#ff662f;
+    background-color:rgb(0, 56, 56);
+    border:1px solid;
+    border-radius: 12px;
+    box-shadow: 5px 10px;
+
+}
+/* adding style to radio buttons */
+.radio input[type='radio'] + .radio-label:before{
+    content:"";
+    background: var(--border-btn);
+    border-radius:100%;
+    border: 1px solid var(--general-border);
+    display:inline-block;
+    width: 1em;
+    height: 1em;
+    position:relative;
+    top:-0em;
+    margin-right: .5em;
+    vertical-align: top;
+    cursor: pointer;
+    text-align:center;
+    -webkit-transition: all 250ms ease;
+    transition:all 250ms ease;
+}
+
+/*  we use radio syling in order to escape from default html radio appearence. later on, we hide the default one completely 
+with in-line styling */
+
+.radio input[type='radio']:checked + .radio-label:before{
+    background-color: rgb(0, 147, 0);
+    box-shadow: inset 0 0 0 4px whitesmoke;
+}
+
+
+.radio input[type='radio']:focus + .radio-label:before{
+outline:none;
+border-color: rgb(0, 140, 0);
+}
+
+.radio input[type='radio']:disabled + .radio-label:before{
+box-shadow: inset 0 0 0 4px rgb(255, 255, 255);
+border-color: rgb(255, 255, 255);
+background: rgb(255, 255, 255);
+}
+
+#update_user .form-group .btn,
+#add_user .form-group .btn{
+    width: 100%;
+    padding:.9em 1em;
+    background-color: #ff662f;
+    border: none;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: .2em;
+    margin:.5em 0;
+
+}
+
+
+#update_user .form-group .btn:hover,
+#add_user .form-group .btn:hover{
+background-color: var(--dark);
+color: var(--general-border);
+}
+
+/* this makes the add new user button get bigger if you hover*/
+#newUserBTN:hover {
+font-size:110%;
+}
