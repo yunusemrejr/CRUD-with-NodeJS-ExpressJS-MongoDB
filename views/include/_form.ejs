@@ -1,61 +1,63 @@
-
-
-<!--
-
-
-
-
-EJS = Embedded JavaScript templating.
-EJS is a simple templating language 
-that lets you generate HTML markup with plain JavaScript.
-
-https://ejs.co/
-
-
-
-
--->
-
-
 <!-- form handling -->
 <form action="/api/users" method="POST" id="add_user">
     <div class="new_user">
         <div class="form-group">
-            <label for="name" class="text-light">Name</label>
+            <label for="name">Full Name <span style="color: var(--danger);">*</span></label>
             <input type="hidden" name="id" value="">
-            <input type="text" name="name" value="" placeholder="Mark Stoenis">
+            <input type="text" name="name" id="name" value="" placeholder="John Doe" required>
         </div>
+
         <div class="form-group">
-            <label for="Email" class="text-light">Email</label>
-            <input type="text" name="email" value="" placeholder="example@gmail.com">
+            <label for="email">Email Address <span style="color: var(--danger);">*</span></label>
+            <input type="email" name="email" id="email" value="" placeholder="john.doe@example.com" required>
         </div>
+
         <div class="form-group">
-            <label for="gender" class="text-light">Gender</label>
-            <div class="radio inline">
-                <input style="visibility:hidden;" type="radio" id="radio-2" name="gender" value="Male" >
-                <label for="radio-2" class="radio-label">Male</label>
-            </div>
-            <div class="radio inline">
-                <input style="visibility:hidden;" type="radio" id="radio-3" name="gender" value="Female" >
-                <label for="radio-3" class="radio-label">Female</label>
+            <label for="phone">Phone Number</label>
+            <input type="text" name="phone" id="phone" value="" placeholder="+1 (555) 123-4567">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea name="address" id="address" rows="3" placeholder="Enter full address" style="resize: vertical;"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Gender <span style="color: var(--danger);">*</span></label>
+            <div style="display: flex; gap: 1.5em; margin-top: 0.5em;">
+                <div class="radio">
+                    <input style="visibility:hidden; position: absolute;" type="radio" id="radio-male" name="gender" value="Male" required>
+                    <label for="radio-male" class="radio-label">Male</label>
+                </div>
+                <div class="radio">
+                    <input style="visibility:hidden; position: absolute;" type="radio" id="radio-female" name="gender" value="Female" required>
+                    <label for="radio-female" class="radio-label">Female</label>
+                </div>
+                <div class="radio">
+                    <input style="visibility:hidden; position: absolute;" type="radio" id="radio-other" name="gender" value="Other" required>
+                    <label for="radio-other" class="radio-label">Other</label>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="gender" class="text-light">Status</label>
-            <div class="radio inline">
-                <input style="visibility:hidden;" type="radio" id="radio-4" name="status" value="Active" >
-                <label for="radio-4" class="radio-label">Active</label>
-            </div>
-            <div class="radio inline">
-                <input style="visibility:hidden;" type="radio" id="radio-5" name="status" value="Inactive" >
-                <label for="radio-5" class="radio-label">Inactive</label>
+            <label>Status <span style="color: var(--danger);">*</span></label>
+            <div style="display: flex; gap: 1.5em; margin-top: 0.5em;">
+                <div class="radio">
+                    <input style="visibility:hidden; position: absolute;" type="radio" id="radio-active" name="status" value="Active" checked required>
+                    <label for="radio-active" class="radio-label">Active</label>
+                </div>
+                <div class="radio">
+                    <input style="visibility:hidden; position: absolute;" type="radio" id="radio-inactive" name="status" value="Inactive" required>
+                    <label for="radio-inactive" class="radio-label">Inactive</label>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn text-dark update">Save</button>
+            <button type="submit" class="btn">
+                <i class="fas fa-save"></i> Save User
+            </button>
         </div>
-
     </div>
 </form>

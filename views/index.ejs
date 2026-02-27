@@ -1,59 +1,79 @@
-<!--
-
-
-
-
-EJS = Embedded JavaScript templating.
-EJS is a simple templating language 
-that lets you generate HTML markup with plain JavaScript.
-
-https://ejs.co/
-
-
-
-
--->
-
-
-
 <!-- include header -->
 <%- include('include/_header') %>
 <!-- /include header -->
 
-
-    <!-- Main Site -->
-    <main id="site-main">
-        <div class="container">
-            <div id="newUserBTN" class="box-nav d-flex justify-between">
-                <a href="/add-user" class="border-shadow">
-                    <span  class="text-gradient">Add New User <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    </span>
-                </a>
-            </div> 
-
-
-            <!-- form handling -->
-            <form action="/" method="POST">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th id="homePgIDTag">ID</th>
-                            <th>Name</th>
-                            <th>@Email</th>
-                            <th>Gender</th>
-                            <th>Current Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%- include('include/_show') %>
-                    </tbody>
-                </table>
-            </form>
+<!-- Main Site -->
+<main id="site-main">
+    <div class="container">
+        <!-- Stats Dashboard -->
+        <div class="stats-container" id="statsContainer">
+            <div class="stat-card">
+                <h3 id="totalUsers">0</h3>
+                <p>Total Users</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="activeUsers">0</h3>
+                <p>Active Users</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="inactiveUsers">0</h3>
+                <p>Inactive Users</p>
+            </div>
         </div>
-    </main>
-<!-- /Main Site -->
 
+        <!-- Search and Filter -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by name or email..." />
+                <select id="statusFilter">
+                    <option value="">All Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+                <select id="genderFilter">
+                    <option value="">All Genders</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <button id="exportBtn" class="btn" style="padding: 0.75em 1.5em; background: var(--success); color: white; border: none; border-radius: 8px; cursor: pointer;">
+                    <i class="fas fa-download"></i> Export CSV
+                </button>
+            </div>
+        </div>
+
+        <!-- Add User Button -->
+        <div id="newUserBTN" class="box-nav d-flex justify-between" style="margin-bottom: 1.5em;">
+            <a href="/add-user">
+                <i class="fa fa-user-plus"></i> Add New User
+            </a>
+        </div>
+
+        <!-- Table Container -->
+        <div class="table-container">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <%- include('include/_show') %>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="paginationContainer"></div>
+    </div>
+</main>
+<!-- /Main Site -->
 
 <!-- include footer -->
 <%- include('include/_footer') %>
