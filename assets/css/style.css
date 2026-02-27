@@ -1,19 +1,28 @@
 
-/* importing Barlow and Sans into our stylesheet */
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=PT+Sans&display=swap');
+/* importing modern fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* adding descriptive variables to be called that determines certain color codes */
-
+/* Modern color palette */
 :root{
-    --dark: #003838;
-    --light: rgb(190, 190, 190);
-    --general-border: rgb(214, 214, 214);
-    --border-btn: rgb(255, 255, 255);
-
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --primary-light: #3b82f6;
+    --secondary: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --dark: #1f2937;
+    --light: #f3f4f6;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --border: #e5e7eb;
+    --white: #ffffff;
+    --success: #10b981;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-lg: rgba(0, 0, 0, 0.15);
 }
 
 
-/* setting padding, margin and box-sizing for the whole document */
+/* Global reset and base styles */
 
 *{
     padding:0;
@@ -21,254 +30,531 @@
     box-sizing:border-box;
 }
 
-/* defining all "a" elements/tags */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
 
 a{
-
-    /* removing the underline from default hyperlink styling */
     text-decoration:none; 
-
-    /* defining font families for the tag */
-    font-family: 'PT Sans', sans-serif;
-
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
 }
 
 .container{
-    max-width: 1024px;
-    margin:auto;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
 }
 
 .nav-brand{
-    font-size: 1.5em;
-    font-weight:bold;
+    font-size: 1.75em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .d-flex{
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
 }
-
 
 .justify-between {
     justify-content: space-between;
 }
 
-.text-center{
-    text-align:center;
+.align-center {
+    align-items: center;
+}
 
+.text-center{
+    text-align: center;
 }
 
 .border-shadow{
-    /* first use case of our defined color variables */
-    border:1px solid var(--border-btn);
-    box-shadow: 1px 3px 10px lightgrey;
-    border-radius: 6px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 6px var(--shadow);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.border-shadow:hover {
+    box-shadow: 0 10px 20px var(--shadow-lg);
+    transform: translateY(-2px);
 }
 
 .text-dark{
-    color:var(--dark);
+    color: var(--text-primary);
 }
 
 .inline{
-    display:inline-block;
+    display: inline-block;
 }
 
 .text-light{
-    color:var(--light);
+    color: var(--text-secondary);
 }
 
 .text-gradient{
-    /*creating the gradient effect for our buttons (edit| delete  |add user) */
-    background: linear-gradient(to right , #003838 , #1a9191);
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
- }
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 .header nav{
-    background-color:orange;
-    padding:1em 0;
-    width:100%;
+    background: var(--white);
+    padding: 1.5em 0;
+    width: 100%;
+    box-shadow: 0 2px 10px var(--shadow);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
 #site-main{
-    margin-top:6em;
-    font-family: 'Barlow', sans-serif;
+    margin-top: 8em;
+    padding-bottom: 3em;
+    font-family: 'Inter', sans-serif;
 }
 
 #site-main .container .box-nav>a{
-    font-size:1em;
-    padding:.5em 1em;
+    font-size: 1em;
+    padding: 0.75em 1.5em;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 8px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#site-main .container .box-nav>a:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
 }
 
 #site-main .container form{
     margin: 2em 0;
 }
 
+/* Modern card-style table container */
+.table-container {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5em;
+    box-shadow: 0 4px 20px var(--shadow);
+    overflow: hidden;
+}
+
 table{
-    border-spacing:0px;
+    border-spacing: 0;
     width: 100%;
+    border-collapse: separate;
 }
 
 .table td, .table th{
-    padding: .75em;
-    vertical-align:top;
-    text-align:center;
-    border-top:4px solid #003838;
+    padding: 1em;
+    vertical-align: middle;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.table th {
+    font-weight: 600;
+    font-size: 0.875em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .table td> a.btn{
-    padding:.3em 1em;
-    font-size:1.1em;
-    margin:0.2em;
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    margin: 0.2em;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
 }
 
-.table tr:hover{
-    background-color:#ff662f;
+.table tbody tr{
+    transition: all 0.2s ease;
 }
 
-.table tr:hover td>a{
-    box-shadow: none;
+.table tbody tr:hover{
+    background-color: var(--light);
+    transform: scale(1.01);
+}
+
+.table tbody tr:hover td>a{
+    box-shadow: 0 2px 8px var(--shadow);
 }
 
 .table .thead-dark th{
-    color:#fff;
-    background-color: var(--dark);
-    border-color:rgb(255, 255, 255);
+    color: var(--text-primary);
+    background-color: var(--light);
+    border-bottom: 2px solid var(--primary);
 }
 
+/* Search and filter styles */
+.search-container {
+    background: var(--white);
+    padding: 1.5em;
+    border-radius: 12px;
+    margin-bottom: 1.5em;
+    box-shadow: 0 2px 10px var(--shadow);
+}
+
+.search-box {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.75em 1em;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-box select {
+    padding: 0.75em 1em;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    background: var(--white);
+}
+
+/* Stats cards */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5em;
+    margin-bottom: 2em;
+}
+
+.stat-card {
+    background: var(--white);
+    padding: 1.5em;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px var(--shadow);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px var(--shadow-lg);
+}
+
+.stat-card h3 {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.3em;
+}
+
+.stat-card p {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    margin-top: 2em;
+    flex-wrap: wrap;
+}
+
+.pagination button,
+.pagination a {
+    padding: 0.5em 1em;
+    border: 2px solid var(--border);
+    background: var(--white);
+    color: var(--text-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.pagination button:hover,
+.pagination a:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+.pagination button.active,
+.pagination a.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive design */
 @media only screen and (max-width:1024px){
     table, thead, tbody, th, td, tr{
-        display:block;
+        display: block;
     }
 
     thead tr{
-        position:absolute;
-        top:-9999px;
-        left:-9999px;
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
     }
 
-    tr {border:1px solid var(--general-border); }
+    tr {
+        border: 1px solid var(--border);
+        margin-bottom: 1em;
+        border-radius: 8px;
+        overflow: hidden;
+    }
 
     td{
-        border:none;
-        border-bottom:1px solid var(--general-border)} ;
+        border: none;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        padding-left: 50%;
+    }
 
-    
+    td:before {
+        position: absolute;
+        left: 1em;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: 600;
+        content: attr(data-label);
+    }
 
-    
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    #site-main {
+        margin-top: 6em;
+    }
+
+    .new_user {
+        padding: 1.5em;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 
 
 
-/* add user and update user temp  */
+/* Modern form styles */
 .form-title{
-    margin-top:2em;
-
+    margin-top: 2em;
+    padding: 1em 0;
 }
 
-.form-title{
-    padding: .5em 0;
+.form-title h2 {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 0.3em;
 }
 
 .new_user{
-    max-width: 786px;
+    max-width: 600px;
     margin: auto;
+    background: var(--white);
+    padding: 2.5em;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--shadow);
 }
 
 #update_user .form-group,
 #add_user .form-group{
-    
-    margin:.4em 0; 
+    margin: 1.2em 0; 
 }
-    #update_user .form-group input[type="text"],
-    #add_user .form-group input[type="text"]{
-        width:100%;
-        padding:.6em 1em;
-        margin:.5em 0;
-        border:1px solid var(--general-border);
-        font-family: 'Barlow', sans-serif;
-        font-size: 1em;
-        border-radius:.2em;
 
-    }
+#update_user .form-group label,
+#add_user .form-group label{
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+    color: var(--text-primary);
+}
 
-    #update_user .form-group .radio,
-    #add_user .form-group .radio{
-        margin:1em 2em;
-    }
-/* styling the header part */
+#update_user .form-group input[type="text"],
+#add_user .form-group input[type="text"],
+#update_user .form-group input[type="email"],
+#add_user .form-group input[type="email"],
+#update_user .form-group textarea,
+#add_user .form-group textarea{
+    width: 100%;
+    padding: 0.875em 1.25em;
+    margin: 0.5em 0;
+    border: 2px solid var(--border);
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: var(--white);
+}
+
+#update_user .form-group input:focus,
+#add_user .form-group input:focus,
+#update_user .form-group textarea:focus,
+#add_user .form-group textarea:focus{
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+#update_user .form-group .radio,
+#add_user .form-group .radio{
+    margin: 0.5em 1em 0.5em 0;
+}
+
+/* Header branding */
 .nav-brand{
-
-    color:#ff662f;
-    background-color:rgb(0, 56, 56);
-    border:1px solid;
-    border-radius: 12px;
-    box-shadow: 5px 10px;
-
+    color: var(--primary);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
 }
-/* adding style to radio buttons */
-.radio input[type='radio'] + .radio-label:before{
-    content:"";
-    background: var(--border-btn);
-    border-radius:100%;
-    border: 1px solid var(--general-border);
-    display:inline-block;
-    width: 1em;
-    height: 1em;
-    position:relative;
-    top:-0em;
-    margin-right: .5em;
-    vertical-align: top;
+/* Modern radio button styles */
+.radio {
+    display: inline-flex;
+    align-items: center;
+}
+
+.radio input[type='radio'] + .radio-label{
     cursor: pointer;
-    text-align:center;
-    -webkit-transition: all 250ms ease;
-    transition:all 250ms ease;
+    display: flex;
+    align-items: center;
+    user-select: none;
 }
 
-/*  we use radio syling in order to escape from default html radio appearence. later on, we hide the default one completely 
-with in-line styling */
+.radio input[type='radio'] + .radio-label:before{
+    content: "";
+    background: var(--white);
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    display: inline-block;
+    width: 1.25em;
+    height: 1.25em;
+    margin-right: 0.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
 .radio input[type='radio']:checked + .radio-label:before{
-    background-color: rgb(0, 147, 0);
-    box-shadow: inset 0 0 0 4px whitesmoke;
+    background-color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: inset 0 0 0 3px var(--white);
 }
 
-
 .radio input[type='radio']:focus + .radio-label:before{
-outline:none;
-border-color: rgb(0, 140, 0);
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .radio input[type='radio']:disabled + .radio-label:before{
-box-shadow: inset 0 0 0 4px rgb(255, 255, 255);
-border-color: rgb(255, 255, 255);
-background: rgb(255, 255, 255);
+    box-shadow: inset 0 0 0 4px var(--light);
+    border-color: var(--border);
+    background: var(--light);
+    cursor: not-allowed;
 }
 
+/* Modern button styles */
 #update_user .form-group .btn,
 #add_user .form-group .btn{
     width: 100%;
-    padding:.9em 1em;
-    background-color: #ff662f;
+    padding: 1em 1.5em;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
     border: none;
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1em;
+    font-weight: 600;
     cursor: pointer;
-    border-radius: .2em;
-    margin:.5em 0;
-
+    border-radius: 8px;
+    margin: 1em 0;
+    color: var(--white);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
-
 
 #update_user .form-group .btn:hover,
 #add_user .form-group .btn:hover{
-background-color: var(--dark);
-color: var(--general-border);
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
 }
 
-/* this makes the add new user button get bigger if you hover*/
+#update_user .form-group .btn:active,
+#add_user .form-group .btn:active{
+    transform: translateY(0);
+}
+
+/* Action buttons */
+.btn.update {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.btn.update:hover {
+    background: var(--primary-dark);
+}
+
+.btn.delete {
+    background: var(--danger);
+    color: var(--white);
+}
+
+.btn.delete:hover {
+    background: #dc2626;
+}
+
+#newUserBTN {
+    transition: all 0.3s ease;
+}
+
 #newUserBTN:hover {
-font-size:110%;
+    transform: scale(1.05);
 }

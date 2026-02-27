@@ -20,64 +20,85 @@ https://ejs.co/
 <%- include('include/_header') %>
 <!-- /include header -->
 
-  <!-- Main Site -->
-  <main id="site-main">
+<!-- Main Site -->
+<main id="site-main">
     <div class="container">
-        <div class="box-nav d-flex justify-between">
-           <div class="filter">
-               <a href="/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-                All Users</a>
-           </div>
+        <div class="box-nav d-flex justify-between" style="margin-bottom: 1.5em;">
+            <a href="/" style="background: var(--text-secondary); color: var(--white); padding: 0.75em 1.5em; border-radius: 8px; display: inline-flex; align-items: center; gap: 0.5em;">
+                <i class="fa fa-arrow-left"></i> Back to All Users
+            </a>
         </div>
+
         <div class="form-title text-center">
-            <h2 class="text-dark"><i class="fas fa-pencil-alt"></i> Update User</h2>
-            <span class="text-light">Use the below form to Update an account</span>
+            <h2 class="text-dark">
+                <i class="fas fa-user-edit"></i> Update User
+            </h2>
+            <span class="text-light">Update user information using the form below</span>
         </div>
 
-        <!-- add user form -->
-         <!-- form handling -->
- <form method="POST" id="update_user">
-    <div class="new_user">
-        <div class="form-group">
-            <label for="name" class="text-light">Name</label>
-            <input type="hidden" name="id" value="<%= user._id %>">
-            <input type="text" name="name" value="<%= user.name %>" placeholder="Mark Stoenis">
-        </div>
-        <div class="form-group">
-            <label for="Email" class="text-light">Email</label>
-            <input type="text" name="email" value="<%= user.email%>" placeholder="example@gmail.com">
-        </div>
-        <div class="form-group">
-            <label for="gender" class="text-light">Gender</label>
-            <div class="radio inline">
-                <input type="radio" style="visibility:hidden;" id="radio-2" name="gender" value="Male" <%= user.gender == 'Male' ? 'checked' : '' %>>
-                <label for="radio-2"  class="radio-label">Male</label>
-            </div>
-            <div class="radio inline">
-                <input type="radio" style="visibility:hidden;" id="radio-3" name="gender" value="Female"  <%= user.gender == 'Female' ? 'checked' : '' %> >
-                <label for="radio-3" class="radio-label">Female</label>
-            </div>
-        </div>
+        <!-- Update user form -->
+        <form method="POST" id="update_user">
+            <div class="new_user">
+                <div class="form-group">
+                    <label for="name">Full Name <span style="color: var(--danger);">*</span></label>
+                    <input type="hidden" name="id" value="<%= user._id %>">
+                    <input type="text" name="name" id="name" value="<%= user.name %>" placeholder="John Doe" required>
+                </div>
 
-        <div class="form-group">
-            <label for="gender" class="text-light">Status</label>
-            <div class="radio inline">
-                <input type="radio" style="visibility:hidden;"  id="radio-4" name="status" value="Active" <%= user.status == 'Active' ? 'checked' : '' %> >
-                <label for="radio-4" class="radio-label">Active</label>
-            </div>
-            <div class="radio inline">
-                <input type="radio" style="visibility:hidden;" id="radio-5" name="status" value="Inactive" <%= user.status == 'Inactive' ? 'checked' : '' %> >
-                <label for="radio-5" class="radio-label">Inactive</label>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label for="email">Email Address <span style="color: var(--danger);">*</span></label>
+                    <input type="email" name="email" id="email" value="<%= user.email %>" placeholder="john.doe@example.com" required>
+                </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn text-dark update">Save</button>
-        </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" name="phone" id="phone" value="<%= user.phone || '' %>" placeholder="+1 (555) 123-4567">
+                </div>
 
-    </div>
-</form>
-       
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea name="address" id="address" rows="3" placeholder="Enter full address" style="resize: vertical;"><%= user.address || '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender <span style="color: var(--danger);">*</span></label>
+                    <div style="display: flex; gap: 1.5em; margin-top: 0.5em;">
+                        <div class="radio">
+                            <input style="visibility:hidden; position: absolute;" type="radio" id="radio-male" name="gender" value="Male" <%= user.gender == 'Male' ? 'checked' : '' %> required>
+                            <label for="radio-male" class="radio-label">Male</label>
+                        </div>
+                        <div class="radio">
+                            <input style="visibility:hidden; position: absolute;" type="radio" id="radio-female" name="gender" value="Female" <%= user.gender == 'Female' ? 'checked' : '' %> required>
+                            <label for="radio-female" class="radio-label">Female</label>
+                        </div>
+                        <div class="radio">
+                            <input style="visibility:hidden; position: absolute;" type="radio" id="radio-other" name="gender" value="Other" <%= user.gender == 'Other' ? 'checked' : '' %> required>
+                            <label for="radio-other" class="radio-label">Other</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Status <span style="color: var(--danger);">*</span></label>
+                    <div style="display: flex; gap: 1.5em; margin-top: 0.5em;">
+                        <div class="radio">
+                            <input style="visibility:hidden; position: absolute;" type="radio" id="radio-active" name="status" value="Active" <%= user.status == 'Active' ? 'checked' : '' %> required>
+                            <label for="radio-active" class="radio-label">Active</label>
+                        </div>
+                        <div class="radio">
+                            <input style="visibility:hidden; position: absolute;" type="radio" id="radio-inactive" name="status" value="Inactive" <%= user.status == 'Inactive' ? 'checked' : '' %> required>
+                            <label for="radio-inactive" class="radio-label">Inactive</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn">
+                        <i class="fas fa-save"></i> Update User
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </main>
 <!-- /Main Site -->

@@ -1,27 +1,36 @@
 {
   "name": "crud_app",
-  "version": "1.0.0",
-  "description": "crud application with express and mongodb",
+  "version": "2.0.0",
+  "description": "Modern CRUD application with Express and MongoDB",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "prod": "node server.js"
   },
   "keywords": [
     "crud",
-    "mongodb"
+    "mongodb",
+    "express",
+    "user-management"
   ],
   "author": "yunus emre vurgun",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.26.1",
-    "body-parser": "^1.19.2",
-    "bootbox": "^5.5.2",
-    "dotenv": "^16.0.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.3",
-    "mongoose": "^6.2.9",
+    "axios": "^1.6.7",
+    "body-parser": "^1.20.2",
+    "bootbox": "^6.0.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.3",
+    "express-rate-limit": "^7.2.0",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "mongoose": "^8.2.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^3.1.0"
   }
 }
